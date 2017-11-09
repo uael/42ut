@@ -1,3 +1,6 @@
 [submodule "libft/src"]
 	path = libft/src
 	url = https://github.com/uael/libft.git
+[submodule "gnl/src"]
+	path = gnl/src
+	url = https://github.com/uael/gnl.git

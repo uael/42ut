@@ -23,8 +23,9 @@ function donorm {
 
 function dotest {
     local test=$1
-    gcc ${test} -L${PROJECT_PATH} -lft -I${PROJECT_PATH} -olibft/$(basename "${test%.*}")
-    ./libft/$(basename "${test%.*}")
+    mkdir -p out/libft
+    gcc ${test} -L${PROJECT_PATH} -lft -I${PROJECT_PATH} -oout/libft/$(basename "${test%.*}")
+    ./out/libft/$(basename "${test%.*}")
 }
 
 job "Make" "make all" "make -C${PROJECT_PATH} all"

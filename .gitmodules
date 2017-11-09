@@ -1,0 +1,3 @@
+[submodule "libft/src"]
+	path = libft/src
+	url = https://github.com/uael/libft.git

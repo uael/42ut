@@ -42,4 +42,5 @@ t_i32	main(void)
 		assert(*sst == NULL);
 		assert(*ss == NULL);
 	}
+	return (EXIT_SUCCESS);
 }

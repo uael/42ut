@@ -16,16 +16,13 @@
 
 t_i32	main(void)
 {
-	t_ifs ifs;
-	ssize_t s;
+	t_ifs	ifs;
+	t_car	*buf;
 
 	ifs.fd = open("CMakeLists.txt", O_RDONLY);
 	ifs.buf = NULL;
-	s = ft_ifsbuf(&ifs, 32);
-	ft_putnbr((t_i32)s);
-	ft_putchar('\n');
-	((t_car *)ifs.buf->content)[ifs.buf->content_size] = 0;
-	ft_putendl(ifs.buf->content);
+	while (ft_ifsgetln(&ifs, &buf))
+		ft_putendl(buf);
 	close(ifs.fd);
 	return (EXIT_SUCCESS);
 }

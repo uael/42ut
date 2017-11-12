@@ -32,9 +32,18 @@ function dotest {
   diff ${test_out} ${test_expected}
 }
 
+function dotest_noarg {
+  local test_out="./out/fillit/test_noarg.out"
+  local test_expected="./fillit/test_noarg.expected"
+  mkdir -p out/fillit
+  ./${PROJECT_PATH}/fillit ${test} > ${test_out}
+  diff ${test_out} ${test_expected}
+}
+
 job "Make" "make all" "make -C${PROJECT_PATH} all"
 job "Make" "make clean" "make -C${PROJECT_PATH} clean"
-for test in ./fillit/*.fillit; do
+  job "Test" "noarg" dotest_noarg
+for test in ./fillit/test_*.fillit; do
   job "Test" "$(basename "${test%.*}")" "dotest ${test}"
 done
 job "Norm" "all" "donorm"

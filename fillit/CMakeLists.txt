@@ -1,4 +1,12 @@
-add_subdirectory(src)
+project(fillit C)
+
+file(GLOB_RECURSE fillit_HDRS ${fillit_HDRS} src/include/*.h)
+file(GLOB fillit_SRCS ${fillit_SRCS} src/src/*.c)
+
+add_executable(fillit ${fillit_HDRS} ${fillit_SRCS})
+add_dependencies(fillit ft)
+target_include_directories(fillit PUBLIC src/include)
+target_link_libraries(fillit ft)
 
 file(GLOB fillit_tests_SRCS ${fillit_tests_SRCS} ${CMAKE_CURRENT_LIST_DIR}/test_*.c)
 foreach (fillit_tests_SRC ${fillit_tests_SRCS})

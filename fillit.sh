@@ -36,13 +36,22 @@ function dotest_noarg {
   local test_out="./out/fillit/test_noarg.out"
   local test_expected="./fillit/test_noarg.expected"
   mkdir -p out/fillit
-  ./${PROJECT_PATH}/fillit ${test} > ${test_out}
+  ./${PROJECT_PATH}/fillit > ${test_out}
+  diff ${test_out} ${test_expected}
+}
+
+function dotest_2arg {
+  local test_out="./out/fillit/test_2arg.out"
+  local test_expected="./fillit/test_2arg.expected"
+  mkdir -p out/fillit
+  ./${PROJECT_PATH}/fillit ${test_out} ${test_out} > ${test_out}
   diff ${test_out} ${test_expected}
 }
 
 job "Make" "make all" "make -C${PROJECT_PATH} all"
 job "Make" "make clean" "make -C${PROJECT_PATH} clean"
-  job "Test" "noarg" dotest_noarg
+job "Test" "noarg" dotest_noarg
+job "Test" "2arg" dotest_2arg
 for test in ./fillit/test_*.fillit; do
   job "Test" "$(basename "${test%.*}")" "dotest ${test}"
 done

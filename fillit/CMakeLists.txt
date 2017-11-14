@@ -7,9 +7,9 @@ add_executable(fillit ${fillit_HDRS} ${fillit_SRCS})
 add_dependencies(fillit ft)
 target_include_directories(fillit PUBLIC src/include)
 target_link_libraries(fillit ft)
-target_compile_options(fillit
-  PRIVATE -fomit-frame-pointer -ansi
-  PRIVATE -O3)
+#target_compile_options(fillit
+#  PRIVATE -fomit-frame-pointer -ansi
+#  PRIVATE -O3)
 
 file(GLOB fillit_tests_SRCS ${fillit_tests_SRCS} ${CMAKE_CURRENT_LIST_DIR}/test_*.c)
 foreach (fillit_tests_SRC ${fillit_tests_SRCS})

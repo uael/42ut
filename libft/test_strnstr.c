@@ -13,7 +13,7 @@
 #include <assert.h>
 #include <libft.h>
 
-t_i32	main(void)
+int	main(void)
 {
 	static struct { char *a; char *b; } tests[] = {
 		{ "FF", "see FF your FF return FF now FF" },

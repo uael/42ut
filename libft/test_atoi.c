@@ -13,7 +13,7 @@
 #include <assert.h>
 #include <libft.h>
 
-t_i32	main(void)
+int	main(void)
 {
 	assert(atoi("") == ft_atoi(""));
 	assert(atoi("0") == ft_atoi("0"));

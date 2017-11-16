@@ -12,15 +12,16 @@
 
 #include <assert.h>
 #include <libft.h>
-#include <get_next_line.h>
+#include "src/get_next_line.h"
 #include <fcntl.h>
 
-t_i32	main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char	*bla;
 	int		fd = open(av[1], O_RDONLY);
 
-	while (get_next_line(fd, &bla))
+	(void)ac;
+	while (get_next_line(fd, &bla) > 0)
 		ft_putendl(bla), free(bla);
 	return (EXIT_SUCCESS);
 }

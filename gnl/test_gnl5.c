@@ -12,8 +12,10 @@
 
 #include <assert.h>
 #include <libft.h>
-#include "src/get_next_line.h"
 #include <fcntl.h>
+
+#define BUFF_SIZE 4
+#include "src/get_next_line.h"
 
 static char *foo[] = {
 	"This is free and unencumbered software released into the public domain.",

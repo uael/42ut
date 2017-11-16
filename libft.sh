@@ -6,12 +6,10 @@ PROJECT_PATH=$1
 
 function donorm {
   local pids=""
-  norm_file ${PROJECT_PATH}/libft.h &
+  norm_file ${PROJECT_PATH}/include &
   pids="$pids $!"
-  for file in ${PROJECT_PATH}/ft_*.c; do
-    norm_file ${file} &
-    pids="$pids $!"
-  done
+  norm_file ${PROJECT_PATH}/src &
+  pids="$pids $!"
   wait ${pids}
   out=$(cat ${NORM_OUT})
   if [[ ! -z ${out} ]]; then
@@ -24,7 +22,7 @@ function donorm {
 function dotest {
   local test=$1
   mkdir -p out/libft
-  gcc ${test} -L${PROJECT_PATH} -lft -I${PROJECT_PATH} -oout/libft/$(basename "${test%.*}")
+  gcc ${test} -L${PROJECT_PATH} -lft -I${PROJECT_PATH}/include -oout/libft/$(basename "${test%.*}")
   ./out/libft/$(basename "${test%.*}")
 }
 

@@ -27,8 +27,7 @@ function dotest {
 }
 
 mkdir -p out/gnl
-job "Make" "make libft all" "make -C${PROJECT_PATH}/libft all"
-job "Make" "make libft clean" "make -C${PROJECT_PATH}/libft clean"
+job "Make" "make libft all" "make -C${PROJECT_PATH}/libft"
 job "Make" "compile" "clang -Wall -Wextra -Werror -I ${PROJECT_PATH}/libft/includes -o out/gnl/get_next_line.o -c ${PROJECT_PATH}/get_next_line.c"
 for test in ./gnl/test_*.c; do
   job "Test" "$(basename "${test%.*}")" "dotest ${test}"

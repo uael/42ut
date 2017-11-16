@@ -6,7 +6,7 @@ PROJECT_PATH=$1
 
 function donorm {
   local pids=""
-  for file in ${PROJECT_PATH}/include/*.h; do
+  for file in ${PROJECT_PATH}/src/*.h; do
     norm_file ${file} &
     pids="$pids $!"
   done
